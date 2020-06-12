@@ -162,6 +162,15 @@ document.addEventListener('DOMContentLoaded', () => {
 			img: 'images/pizza.png'
 		}
 	]
+	
+	image_path = ['images/fries.png', 'images/cheeseburger.png', 'images/pizza.png',
+				'images/hotdog.png', 'images/ice-cream.png', 'images/milkshake.png']
+	var images = new Array()
+	// Vamos a cargar las imagenes en la cache
+	for (let i = 0; i<image_path.length; i++){
+		images[i] = new Image()
+		images[i].src = image_path[i]
+	}
 
 	// Randomizamos el array
 	cardArray.sort(() => Math.random() - 0.5)
