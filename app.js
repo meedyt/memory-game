@@ -204,6 +204,16 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	}
 
+	function resetGame(){
+		for(let i=0; i<cardObjects.length; i++){
+			cardObjects[i].setAttribute('src','images/blank.png')
+			cardObjects[i].removeAttribute('data-completed')
+			cardArray.sort(() => Math.random() - 0.5)
+		}
+		puntuacion = 0
+		resultDisplay.textContent = puntuacion
+	}
+
 	function testSuccess() {
 		// Comprobamos si las dos cartas tienen el mismo nombre
 		if (cardsChosen[0] == cardsChosen[1]){
@@ -215,16 +225,19 @@ document.addEventListener('DOMContentLoaded', () => {
 			puntuacion++
 			resultText.textContent = puntuacion
 		} else {
+			window.alert("Sigue intentandolo!")
 			cardObjects[cardsChosenId[0]].setAttribute('src', 'images/blank.png')
 			cardObjects[cardsChosenId[1]].setAttribute('src', 'images/blank.png')
-			window.alert("Sigue intentándolo!!")
 		}
 
-	// Actualizamos las dos cartas seleccionadas
-	cardsChosen = []
-	cardsChosenId = []
+		// Actualizamos las dos cartas seleccionadas
+		cardsChosen = []
+		cardsChosenId = []
 
-
+		if (puntuacion == cardArray.length/2){
+			window.alert("PERO BUENO, SI YA HAS GANADO EL JUEGO");
+			resetGame();
+		}
 	}
 
 	createBoard();
